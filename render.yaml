@@ -19,12 +19,10 @@ services:
     runtime: docker
     dockerfilePath: ./frontend/Dockerfile
     dockerContext: ./frontend
+    buildCommand: ""
     envVars:
       - key: REACT_APP_API_URL
-        fromService:
-          name: mood-tracker-api
-          type: web
-          property: host
+        value: https://mood-tracker-api.onrender.com
 
 databases:
   - name: mood-tracker-db
