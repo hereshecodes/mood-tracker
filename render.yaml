@@ -1,5 +1,5 @@
 services:
-  # Backend API
+  # Backend API (Docker)
   - type: web
     name: mood-tracker-api
     runtime: docker
@@ -13,13 +13,12 @@ services:
       - key: PORT
         value: 3001
 
-  # Frontend
+  # Frontend (Static site - much lighter)
   - type: web
     name: mood-tracker-ui
-    runtime: docker
-    dockerfilePath: ./frontend/Dockerfile
-    dockerContext: ./frontend
-    buildCommand: ""
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/build
     envVars:
       - key: REACT_APP_API_URL
         value: https://mood-tracker-api.onrender.com
