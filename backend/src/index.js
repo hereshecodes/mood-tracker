@@ -138,7 +138,7 @@ app.delete('/api/moods/:id', async (req, res) => {
 });
 
 // Start server
-app.listen(PORT, async () => {
+app.listen(PORT, '0.0.0.0', async () => {
   console.log(`Server running on port ${PORT}`);
   await initDb();
 });
